@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/background">
+        <file>img/Angry Birds Seasons/Angry Birds Seasons/BACKGROUND_9_LAYER_1.png</file>
+    </qresource>
+    <qresource prefix="/sling">
+        <file>img/Angry Birds Seasons/Angry Birds Seasons/SLING_SHOT_01_BACK.png</file>
+        <file>img/Angry Birds Seasons/Angry Birds Seasons/SLING_SHOT_01_FRONT.png</file>
+    </qresource>
+    <qresource prefix="/bird">
+        <file>img/Angry Birds Seasons/Angry_Bird_red.png</file>
+    </qresource>
+    <qresource prefix="/obstacle">
+        <file>img/Angry Birds Seasons/wood_mid_horizontal.png</file>
+        <file>img/Angry Birds Seasons/wood_mid_vertical.png</file>
+        <file>img/Angry Birds Seasons/wood_ball.png</file>
+    </qresource>
+</RCC>
