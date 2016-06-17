@@ -3,7 +3,12 @@
 Item::Item(b2World *world):
     Body(NULL),World(world)
 {
+    death = false;
+}
 
+Item::~Item()
+{
+    World->DestroyBody(Body);
 }
 
 QSizeF Item::db2_worldSize = QSizeF();
@@ -14,6 +19,10 @@ void Item::setSize(QSizeF worldSize, QSizeF pixelSize)
     //saves the size of world and pixel;
     db2_worldSize = worldSize;
     db2_pixelSize = pixelSize;
+}
+
+void Item::collision()
+{
 }
 
 void Item::paint()

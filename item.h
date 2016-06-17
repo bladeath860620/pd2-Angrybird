@@ -8,11 +8,15 @@ class Item : public QObject
     Q_OBJECT
 public:
     Item(b2World *world);
+    ~Item();
     void setSize(QSizeF worldSize, QSizeF pixelSize);
     b2Body *Body;
     b2World *World;
     QSizeF size;
     QGraphicsPixmapItem Pixmap;
+    double HP;
+    bool death;
+    virtual void collision();
 
 public slots:
 

@@ -2,6 +2,8 @@
 
 Obstacle::Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene):Item(world)
 {
+    HP = 18000;
+    death = false;
     Pixmap.setPixmap(pixmap);
     Pixmap.setTransformOriginPoint(Pixmap.boundingRect().width()/2,Pixmap.boundingRect().height()/2);
     size = QSize(w,h);
@@ -25,4 +27,15 @@ Obstacle::Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pi
     Body->CreateFixture(&fixturedef);
     connect(timer, SIGNAL(timeout()), this,SLOT(paint()));
     scene->addItem(&Pixmap);
+}
+
+void Obstacle::collision()
+{
+
+    qDebug() << "rect Bumped" << death;
+    b2Vec2 speed = Body -> GetLinearVelocity();
+    double V = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
+    HP -= 500*V;
+    if(HP<100)
+        death = true;
 }

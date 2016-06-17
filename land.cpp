@@ -2,7 +2,6 @@
 
 Land::Land(float x, float y, float w, float h, b2World *world, QGraphicsScene *scene):Item(world)
 {
-
     size = QSize(w,h);
 
     // Create body

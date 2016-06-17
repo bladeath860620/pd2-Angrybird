@@ -8,6 +8,7 @@
 #include "bird.h"
 #include "obstacle.h"
 #include "ball_obstacle.h"
+#include "bumpchecker.h"
 
 namespace Ui {
 class MainWindow;
@@ -47,6 +48,9 @@ private:
     Obstacle *wood3;
     Obstacle *wood4;
     Ball_Obstacle *wood5;
+    BumpChecker *contact;
+    QVector<Item*> WOOD;
+    QVector<Item*> ::iterator it;
 };
 
 #endif // MAINWINDOW_H

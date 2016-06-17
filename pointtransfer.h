@@ -13,6 +13,7 @@
 #include <QPixmap>
 #include <QDebug>
 #include <QMouseEvent>
+#include <QVector>
 
 #define pi 3.14159
 
@@ -23,6 +24,9 @@
 #define WOOD_DENSITY 10.0
 #define WOOD_FRICTION 1.0
 #define WOOD_RESTITUTION 0.3
+
+#define MID_WOOD_HP 12000.0
+#define BALL_WOOD_HP 36000.0
 
 #define start_X -34
 #define start_Y -7.5
