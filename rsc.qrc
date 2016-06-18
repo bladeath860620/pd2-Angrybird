@@ -7,6 +7,8 @@
         <file>img/Angry Birds Seasons/angry-bird-yellow-icon.png</file>
         <file>img/Angry Birds Seasons/BLOCK_STEEL_BALL.png</file>
         <file>img/Angry Birds Seasons/BLOCK_EXTRA_TNT.png</file>
+        <file>img/Angry Birds Seasons/BIRD_GREY_YELL.png</file>
+        <file>img/Angry Birds Seasons/TA.png</file>
     </qresource>
     <qresource prefix="/pig">
         <file>img/Angry Birds Seasons/pig_damaged.png</file>

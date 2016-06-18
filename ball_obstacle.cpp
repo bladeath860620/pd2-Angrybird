@@ -32,7 +32,6 @@ Ball_Obstacle::Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPix
 
 void Ball_Obstacle::collision()
 {
-
     b2Vec2 speed = Body -> GetLinearVelocity();
     double V = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
     HP -= 500*V;
