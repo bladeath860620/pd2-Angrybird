@@ -56,7 +56,8 @@ SOURCES       = main.cpp \
 		land.cpp \
 		obstacle.cpp \
 		ball_obstacle.cpp \
-		bumpchecker.cpp qrc_rsc.cpp \
+		bumpchecker.cpp \
+		pig.cpp qrc_rsc.cpp \
 		moc_mainwindow.cpp \
 		moc_item.cpp
 OBJECTS       = main.o \
@@ -68,6 +69,7 @@ OBJECTS       = main.o \
 		obstacle.o \
 		ball_obstacle.o \
 		bumpchecker.o \
+		pig.o \
 		qrc_rsc.o \
 		moc_mainwindow.o \
 		moc_item.o
@@ -212,7 +214,8 @@ DIST          = ../../../../QT_5.6.0/5.6/gcc_64/mkspecs/features/spec_pre.prf \
 		land.h \
 		obstacle.h \
 		ball_obstacle.h \
-		bumpchecker.h main.cpp \
+		bumpchecker.h \
+		pig.h main.cpp \
 		mainwindow.cpp \
 		item.cpp \
 		pointtransfer.cpp \
@@ -220,7 +223,8 @@ DIST          = ../../../../QT_5.6.0/5.6/gcc_64/mkspecs/features/spec_pre.prf \
 		land.cpp \
 		obstacle.cpp \
 		ball_obstacle.cpp \
-		bumpchecker.cpp
+		bumpchecker.cpp \
+		pig.cpp
 QMAKE_TARGET  = Angrybird
 DESTDIR       = 
 TARGET        = Angrybird
@@ -526,8 +530,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents rsc.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h item.h pointtransfer.h bird.h land.h obstacle.h ball_obstacle.h bumpchecker.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp item.cpp pointtransfer.cpp bird.cpp land.cpp obstacle.cpp ball_obstacle.cpp bumpchecker.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h item.h pointtransfer.h bird.h land.h obstacle.h ball_obstacle.h bumpchecker.h pig.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp item.cpp pointtransfer.cpp bird.cpp land.cpp obstacle.cpp ball_obstacle.cpp bumpchecker.cpp pig.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui $(DISTDIR)/
 
 
@@ -722,11 +726,14 @@ moc_mainwindow.cpp: ../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QMainWindo
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QPixmap \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QDebug \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QMouseEvent \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h \
 		land.h \
 		bird.h \
 		obstacle.h \
 		ball_obstacle.h \
+		bumpchecker.h \
+		pig.h \
 		mainwindow.h
 	/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/skywater/Desktop/PROGRAM/Angry/Angrybird/Angrybird -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtWidgets -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtGui -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
@@ -886,6 +893,7 @@ moc_item.cpp: pointtransfer.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h
 	/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/skywater/Desktop/PROGRAM/Angry/Angrybird/Angrybird -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtWidgets -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtGui -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtCore item.h -o moc_item.cpp
 
@@ -1072,11 +1080,14 @@ main.o: main.cpp mainwindow.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QPixmap \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QDebug \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QMouseEvent \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h \
 		land.h \
 		bird.h \
 		obstacle.h \
 		ball_obstacle.h \
+		bumpchecker.h \
+		pig.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QApplication \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1251,11 +1262,14 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QPixmap \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QDebug \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QMouseEvent \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h \
 		land.h \
 		bird.h \
 		obstacle.h \
 		ball_obstacle.h \
+		bumpchecker.h \
+		pig.h \
 		ui_mainwindow.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QAction \
@@ -1290,6 +1304,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qstyle.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qtabbar.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QLCDNumber \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qlcdnumber.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QLabel \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qlabel.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QWidget \
@@ -1452,7 +1468,8 @@ item.o: item.cpp item.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfile.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o item.o item.cpp
 
 pointtransfer.o: pointtransfer.cpp pointtransfer.h \
@@ -1610,7 +1627,8 @@ pointtransfer.o: pointtransfer.cpp pointtransfer.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfile.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pointtransfer.o pointtransfer.cpp
 
 bird.o: bird.cpp bird.h \
@@ -1770,6 +1788,7 @@ bird.o: bird.cpp bird.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bird.o bird.cpp
 
@@ -1930,6 +1949,7 @@ land.o: land.cpp land.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o land.o land.cpp
 
@@ -2090,6 +2110,7 @@ obstacle.o: obstacle.cpp obstacle.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obstacle.o obstacle.cpp
 
@@ -2250,6 +2271,7 @@ ball_obstacle.o: ball_obstacle.cpp ball_obstacle.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ball_obstacle.o ball_obstacle.cpp
 
@@ -2410,8 +2432,170 @@ bumpchecker.o: bumpchecker.cpp bumpchecker.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bumpchecker.o bumpchecker.cpp
+
+pig.o: pig.cpp pig.h \
+		pointtransfer.h \
+		Box2D/Box2D.h \
+		Box2D/Common/b2Settings.h \
+		Box2D/Common/b2Draw.h \
+		Box2D/Common/b2Math.h \
+		Box2D/Common/b2Timer.h \
+		Box2D/Collision/Shapes/b2CircleShape.h \
+		Box2D/Collision/Shapes/b2Shape.h \
+		Box2D/Common/b2BlockAllocator.h \
+		Box2D/Collision/b2Collision.h \
+		Box2D/Collision/Shapes/b2EdgeShape.h \
+		Box2D/Collision/Shapes/b2ChainShape.h \
+		Box2D/Collision/Shapes/b2PolygonShape.h \
+		Box2D/Collision/b2BroadPhase.h \
+		Box2D/Collision/b2DynamicTree.h \
+		Box2D/Common/b2GrowableStack.h \
+		Box2D/Collision/b2Distance.h \
+		Box2D/Collision/b2TimeOfImpact.h \
+		Box2D/Dynamics/b2Body.h \
+		Box2D/Dynamics/b2Fixture.h \
+		Box2D/Dynamics/b2WorldCallbacks.h \
+		Box2D/Dynamics/b2TimeStep.h \
+		Box2D/Dynamics/b2World.h \
+		Box2D/Common/b2StackAllocator.h \
+		Box2D/Dynamics/b2ContactManager.h \
+		Box2D/Dynamics/Contacts/b2Contact.h \
+		Box2D/Dynamics/Joints/b2DistanceJoint.h \
+		Box2D/Dynamics/Joints/b2Joint.h \
+		Box2D/Dynamics/Joints/b2FrictionJoint.h \
+		Box2D/Dynamics/Joints/b2GearJoint.h \
+		Box2D/Dynamics/Joints/b2MotorJoint.h \
+		Box2D/Dynamics/Joints/b2MouseJoint.h \
+		Box2D/Dynamics/Joints/b2PrismaticJoint.h \
+		Box2D/Dynamics/Joints/b2PulleyJoint.h \
+		Box2D/Dynamics/Joints/b2RevoluteJoint.h \
+		Box2D/Dynamics/Joints/b2RopeJoint.h \
+		Box2D/Dynamics/Joints/b2WeldJoint.h \
+		Box2D/Dynamics/Joints/b2WheelJoint.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QGraphicsPixmapItem \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qgraphicsitem.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qglobal.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qconfig.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfeatures.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qtypetraits.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qisenum.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qlogging.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qflags.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_gcc.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_armv7.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_armv6.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_armv5.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_ia64.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_x86.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qatomic_unix.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmutex.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qnumeric.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qnamespace.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qstring.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qchar.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qbytearray.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qrefcount.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qarraydata.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qlist.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qiterator.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qpair.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qstringlist.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qregexp.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetatype.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qvariant.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmap.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qhash.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qtextstream.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qiodevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qlocale.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qshareddata.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qvector.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qpoint.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qset.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qrect.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmargins.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qsize.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qpainterpath.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qmatrix.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qpolygon.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qregion.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qdatastream.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qline.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qpixmap.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qcolor.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qrgb.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qrgba64.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qimage.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtransform.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QPainter \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qpainter.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtextoption.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qpen.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qbrush.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qfont.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QTransform \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QtMath \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmath.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSizeF \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QGraphicsScene \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qgraphicsscene.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QList \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QTimer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qtimer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qbasictimer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QPixmap \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QDebug \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QMouseEvent \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qevent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qurl.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qurlquery.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfile.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		item.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pig.o pig.cpp
 
 qrc_rsc.o: qrc_rsc.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_rsc.o qrc_rsc.cpp

@@ -15,15 +15,20 @@ MainWindow::MainWindow(QWidget *parent) :
     worldPixel = this->size();
     pointTransfer::setSize(worldMeter, worldPixel);
 
+
     contact = new BumpChecker;
     world->SetContactListener(contact);
 
     land = new Land(-40.0f, 0.0f, 160, 1, world, scene);
-    bird1 = new Bird(7.0f, 10.7f/*meter(x,y)*/, 1.25f, &timer, QPixmap(":/bird/img/Angry Birds Seasons/Angry_Bird_red.png"), world, scene);
+
+    bird1 = new Bird(7.0f, 10.7f/*meter(x,y)*/,BIRD_DENSITY, BIRD_RADIUS, &timer, QPixmap(":/bird/img/Angry Birds Seasons/Angry_Bird_red.png"), world, scene);
+
+    //BIRD.push_back(land);
     //-------------------------------------------------
     land2 = new Land(0.0f, 0.0f, 1, 35, world, scene);
     land3 = new Land(0.0f, 35.0f, 80, 1, world, scene);
     land4 = new Land(80.0f, 0.0f, 1, 35, world, scene);
+    wall = new Land(70.0f, 10.0f, 5, 10, world, scene);
     //-------------------------------------------------
     wood1 = new Obstacle(40.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),world,scene);
     WOOD.push_back(wood1);
@@ -33,10 +38,28 @@ MainWindow::MainWindow(QWidget *parent) :
     WOOD.push_back(wood3);
     wood4 = new Obstacle(42.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),world,scene);
     WOOD.push_back(wood4);
-    wood5 = new Ball_Obstacle(41.8,11.5,1.9,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball.png"),world,scene);
+    wood5 = new Ball_Obstacle(41.75,11.5,1.9,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball.png"), QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball_damaged.png"),world,scene);
     WOOD.push_back(wood5);
+    wood6 = new Obstacle(36.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),world,scene);
+    WOOD.push_back(wood6);
+    wood7 = new Obstacle(48.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),world,scene);
+    WOOD.push_back(wood7);
+    wood8 = new Obstacle(38.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),world,scene);
+    WOOD.push_back(wood8);
+    wood9 = new Obstacle(46.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),world,scene);
+    WOOD.push_back(wood9);
+
+
+    pig1 = new Pig(42.0f, 2.0f/*meter(x,y)*/, 1.0f, &timer, QPixmap(":/pig/img/Angry Birds Seasons/pig.png"), world, scene);
+    PIG.push_back(pig1);
+    pig2 = new Pig(38.0f, 2.0f/*meter(x,y)*/, 1.0f, &timer, QPixmap(":/pig/img/Angry Birds Seasons/pig.png"), world, scene);
+    PIG.push_back(pig2);
+    pig3 = new Pig(46.0f, 2.0f/*meter(x,y)*/, 1.0f, &timer, QPixmap(":/pig/img/Angry Birds Seasons/pig.png"), world, scene);
+    PIG.push_back(pig3);
+
 
     WOOD.push_back(land);
+    PIG.push_back(land);
 
     connect(&timer,SIGNAL(timeout()),this,SLOT(tick()));
     timer.start(60/1000);//FPS
@@ -46,12 +69,78 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::tick()
 {
+    ui->lcdNumber->display(score);
+    ui->lcdNumber_2->display(pig_count);
+    ui->lcdNumber_3->display(6-bird_count);
+    if(shot)
+    {
+        b2Vec2 speed = (*Bit)->Body->GetLinearVelocity();
+        double VB = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
+        if(VB == 0 && bird_count == 2)
+        {
+            bird2 = new Bird(6.8f, 10.7f,BIRD_DENSITY, BIRD_RADIUS, &timer, QPixmap(":/bird/img/Angry Birds Seasons/angry-bird-yellow-icon.png"), world, scene);
+            BIRD.push_back(bird2);
+            delete (*Bit);
+            BIRD.erase(Bit);
+            shot = false;
+            newed = true;
+        }
+        else if(VB == 0 && bird_count == 3)
+        {
+            bird3 = new Bird(6.8f, 10.7f,BIRD_DENSITY*4, 1.5, &timer, QPixmap(":/bird/img/Angry Birds Seasons/BLOCK_STEEL_BALL.png"), world, scene);
+            BIRD.push_back(bird3);
+            delete (*Bit);
+            BIRD.erase(Bit);
+            shot = false;
+            newed = true;
+        }
+        else if(VB == 0 && bird_count == 4)
+        {
+            bird4 = new Bird(6.8f, 10.7f,BIRD_DENSITY, BIRD_RADIUS*1.25, &timer, QPixmap(":/bird/img/Angry Birds Seasons/BLOCK_EXTRA_TNT.png"), world, scene);
+            BIRD.push_back(bird4);
+            delete (*Bit);
+            BIRD.erase(Bit);
+            shot = false;
+            newed = true;
+        }
+        else if(VB == 0 && bird_count == 5)
+        {
+            bird5 = new Bird(6.8f, 10.7f,BIRD_DENSITY, BIRD_RADIUS, &timer, QPixmap(":/bird/img/Angry Birds Seasons/Angry_Bird_red.png"), world, scene);
+            BIRD.push_back(bird5);
+            delete (*Bit);
+            BIRD.erase(Bit);
+            shot = false;
+            newed = true;
+        }
+        else if(VB == 0 && bird_count == 6)
+        {
+            bird6 = new Bird(6.8f, 10.7f,BIRD_DENSITY, BIRD_RADIUS, &timer, QPixmap(""), world, scene);
+            BIRD.push_back(bird6);
+            delete (*Bit);
+            BIRD.erase(Bit);
+            shot = false;
+            newed = true;
+        }
+    }
     for(it = WOOD.begin(); it!= WOOD.end(); ++it)
     {
         if((*it)->death)
         {
             delete (*it);
             WOOD.erase(it);
+            score += 2000;
+            qDebug() << score;
+        }
+    }
+    for(it = PIG.begin(); it!= PIG.end(); ++it)
+    {
+        if((*it)->death)
+        {
+            delete (*it);
+            PIG.erase(it);
+            score += 5000;
+            --pig_count;
+            qDebug() << score;
         }
     }
     world->Step(1.0/60.0, 6, 2);
@@ -64,8 +153,61 @@ bool MainWindow::eventFilter(QObject *, QEvent *event)
     {
         pressed = false;
         Force_pos = static_cast<QMouseEvent*>(event)->pos();
-        bird1->setLinearVelocity(b2Vec2((140-Force_pos.x())/5,(Force_pos.y()-501.4)/5));
-        bird1->Body->SetGravityScale(1);
+        if(qSqrt(qPow(Force_pos.x()-140,2)+qPow(Force_pos.y()-501.4,2))<=140 && bird_count == 1)
+        {
+            bird1->setLinearVelocity(b2Vec2((140-Force_pos.x())/5,(Force_pos.y()-501.4)/5));
+            bird1->Body->SetGravityScale(1);
+            ++bird_count;
+            shot = true;
+            skill = true;
+            BIRD.push_back(bird1);
+            Bit = BIRD.begin();
+            newed = false;
+        }
+        else if(qSqrt(qPow(Force_pos.x()-140,2)+qPow(Force_pos.y()-501.4,2))<=140 && bird_count == 2 && newed)
+        {
+            bird2->setLinearVelocity(b2Vec2((140-Force_pos.x())/5,(Force_pos.y()-501.4)/5));
+            bird2->Body->SetGravityScale(1);
+            ++bird_count;
+            shot = true;
+            skill = true;
+            //BIRD.push_back(bird2);
+            //++Bit;
+            newed = false;
+        }
+        else if(qSqrt(qPow(Force_pos.x()-140,2)+qPow(Force_pos.y()-501.4,2))<=140 && bird_count == 3 && newed)
+        {
+            bird3->setLinearVelocity(b2Vec2((140-Force_pos.x())/5,(Force_pos.y()-501.4)/5));
+            bird3->Body->SetGravityScale(1);
+            ++bird_count;
+            shot = true;
+            skill = true;
+            //BIRD.push_back(bird3);
+            //++Bit;
+            newed = false;
+        }
+        else if(qSqrt(qPow(Force_pos.x()-140,2)+qPow(Force_pos.y()-501.4,2))<=140 && bird_count == 4 && newed)
+        {
+            bird4->setLinearVelocity(b2Vec2((140-Force_pos.x())/5,(Force_pos.y()-501.4)/5));
+            bird4->Body->SetGravityScale(1);
+            ++bird_count;
+            shot = true;
+            skill = true;
+            //BIRD.push_back(bird4);
+            //++Bit;
+            newed = false;
+        }
+        else if(qSqrt(qPow(Force_pos.x()-140,2)+qPow(Force_pos.y()-501.4,2))<=140 && bird_count == 5 && newed)
+        {
+            bird5->setLinearVelocity(b2Vec2((140-Force_pos.x())/5,(Force_pos.y()-501.4)/5));
+            bird5->Body->SetGravityScale(1);
+            ++bird_count;
+            shot = true;
+            skill = true;
+            //BIRD.push_back(bird5);
+            //++Bit;
+            newed = false;
+        }
     }
     /*else if(pressed && event->type() == QEvent::MouseMove)
     {
@@ -76,11 +218,43 @@ bool MainWindow::eventFilter(QObject *, QEvent *event)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << "pressed = true";
+    //qDebug() << "pressed = true";
     Force_pos0 = event->pos();
     pressed = true;
-    if(pressed)
-        return;
+    /*if(pressed)
+        return;*/
+    if(skill && shot)
+    {
+        b2Vec2 speed = (*Bit)->Body->GetLinearVelocity();
+        switch(bird_count-1)
+        {
+            case 1:
+                qDebug() << "red";
+                skill = false;
+            break;
+            case 2:
+                qDebug() << "yellow";
+                (*Bit)->Body->SetLinearVelocity(b2Vec2(speed.x*10,speed.y*10));
+                skill = false;
+            break;
+            case 3:
+                qDebug() << "iron";
+                (*Bit)->Body->SetLinearVelocity(b2Vec2(0,-100));
+                skill = false;
+            break;
+            case 4:
+                qDebug() << "TNT";
+                skill = false;
+            break;
+            case 5:
+                qDebug() << " ";
+                skill = false;
+            break;
+            default:
+                qDebug() << "nothing happens";
+            break;
+        }
+    }
 }
 
 MainWindow::~MainWindow()

@@ -15,6 +15,7 @@ public:
     QSizeF size;
     QGraphicsPixmapItem Pixmap;
     double HP;
+    double VB;
     bool death;
     virtual void collision();
 

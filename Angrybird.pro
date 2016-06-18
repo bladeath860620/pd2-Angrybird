@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     land.cpp \
     obstacle.cpp \
     ball_obstacle.cpp \
-    bumpchecker.cpp
+    bumpchecker.cpp \
+    pig.cpp
 
 HEADERS  += mainwindow.h \
     item.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     land.h \
     obstacle.h \
     ball_obstacle.h \
-    bumpchecker.h
+    bumpchecker.h \
+    pig.h
 
 FORMS    += mainwindow.ui
 

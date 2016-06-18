@@ -1,9 +1,8 @@
-#include "ball_obstacle.h"
+#include "pig.h"
 
-Ball_Obstacle::Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPixmap pixmap, QPixmap pixmap2, b2World *world, QGraphicsScene *scene):Item(world)
+Pig::Pig(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene):Item(world)
 {
-    HP = BALL_WOOD_HP;
-    death = false;
+    HP = PIG_HP;
     Pixmap.setPixmap(pixmap);
     Pixmap.setTransformOriginPoint(Pixmap.boundingRect().width()/2,Pixmap.boundingRect().height()/2);
     size = QSize(radius*2,radius*2);
@@ -26,21 +25,14 @@ Ball_Obstacle::Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPix
     Body->CreateFixture(&fixturedef);
     connect(timer, SIGNAL(timeout()), this,SLOT(paint()));
     scene->addItem(&Pixmap);
-    if(HP<BALL_WOOD_HP/2)
-        Pixmap.setPixmap(pixmap2);
 }
 
-void Ball_Obstacle::collision()
+void Pig::collision()
 {
-
+    //qDebug() << " HP : " << HP;
     b2Vec2 speed = Body -> GetLinearVelocity();
     double V = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
     HP -= 500*V;
     if(HP<=0)
-    {
         death = true;
-        HP = 0;
-    }
 }
-
-

@@ -2,7 +2,7 @@
 
 Obstacle::Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene):Item(world)
 {
-    HP = 18000;
+    HP = MID_WOOD_HP;
     death = false;
     Pixmap.setPixmap(pixmap);
     Pixmap.setTransformOriginPoint(Pixmap.boundingRect().width()/2,Pixmap.boundingRect().height()/2);
@@ -31,11 +31,13 @@ Obstacle::Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pi
 
 void Obstacle::collision()
 {
-
-    qDebug() << "rect Bumped" << death;
+    //qDebug() << "rect Bumped" << death;
     b2Vec2 speed = Body -> GetLinearVelocity();
     double V = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
     HP -= 500*V;
-    if(HP<100)
+    if(HP<=0)
+    {
         death = true;
+        HP = 0;
+    }
 }
