@@ -1,7 +1,8 @@
 #include "obstacle.h"
 
-Obstacle::Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene):Item(world)
+Obstacle::Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pixmap, int type, b2World *world, QGraphicsScene *scene):Item(world)
 {
+    TYPE = type;
     HP = MID_WOOD_HP;
     death = false;
     Pixmap.setPixmap(pixmap);
@@ -39,5 +40,13 @@ void Obstacle::collision()
     {
         death = true;
         HP = 0;
+    }
+    else if(HP <= MID_WOOD_HP/2)
+    {
+        if(TYPE == 1)
+            Pixmap.setPixmap(QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical_damaged.png"));
+        else if(TYPE == 0)
+            Pixmap.setPixmap(QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal_damaged.png"));
+
     }
 }

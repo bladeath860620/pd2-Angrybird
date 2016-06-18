@@ -6,7 +6,7 @@
 class Ball_Obstacle : public Item
 {
 public:
-    Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPixmap pixmap, QPixmap pixmap2, b2World *world, QGraphicsScene *scene);
+    Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene);
     double HP;
     void collision();
 };

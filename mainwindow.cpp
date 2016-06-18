@@ -30,23 +30,23 @@ MainWindow::MainWindow(QWidget *parent) :
     land4 = new Land(120.0f, 0.0f, 1, 80, world, scene);
     wall = new Land(70.0f, 10.0f, 5, 10, world, scene);
     //-------------------------------------------------
-    wood1 = new Obstacle(40.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),world,scene);
+    wood1 = new Obstacle(40.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),1,world,scene);
     WOOD.push_back(wood1);
-    wood2 = new Obstacle(44.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),world,scene);
+    wood2 = new Obstacle(44.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),1,world,scene);
     WOOD.push_back(wood2);
-    wood3 = new Obstacle(42.0,8.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),world,scene);
+    wood3 = new Obstacle(42.0,8.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),1,world,scene);
     WOOD.push_back(wood3);
-    wood4 = new Obstacle(42.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),world,scene);
+    wood4 = new Obstacle(42.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),0,world,scene);
     WOOD.push_back(wood4);
-    wood5 = new Ball_Obstacle(41.75,11.5,1.9,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball.png"), QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball_damaged.png"),world,scene);
+    wood5 = new Ball_Obstacle(41.75,11.5,1.9,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball.png"),world,scene);
     WOOD.push_back(wood5);
-    wood6 = new Obstacle(36.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),world,scene);
+    wood6 = new Obstacle(36.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),1,world,scene);
     WOOD.push_back(wood6);
-    wood7 = new Obstacle(48.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),world,scene);
+    wood7 = new Obstacle(48.0,2.0,1,4,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical.png"),1,world,scene);
     WOOD.push_back(wood7);
-    wood8 = new Obstacle(38.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),world,scene);
+    wood8 = new Obstacle(38.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),0,world,scene);
     WOOD.push_back(wood8);
-    wood9 = new Obstacle(46.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),world,scene);
+    wood9 = new Obstacle(46.0,6.0,4,1,&timer, QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_horizontal.png"),0,world,scene);
     WOOD.push_back(wood9);
 
 
@@ -273,7 +273,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
                 pressed = false;
             break;
             case 5:
-                qDebug() << "NUCLEAR";
+                qDebug() << "NUCLEAR TA";
                 gravity_center = (*Bit)->Body->GetPosition();
                 for(it=WOOD.begin(); it!=WOOD.end(); ++it)
                 {

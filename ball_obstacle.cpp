@@ -1,6 +1,6 @@
 #include "ball_obstacle.h"
 
-Ball_Obstacle::Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPixmap pixmap, QPixmap pixmap2, b2World *world, QGraphicsScene *scene):Item(world)
+Ball_Obstacle::Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene):Item(world)
 {
     HP = BALL_WOOD_HP;
     death = false;
@@ -26,8 +26,6 @@ Ball_Obstacle::Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPix
     Body->CreateFixture(&fixturedef);
     connect(timer, SIGNAL(timeout()), this,SLOT(paint()));
     scene->addItem(&Pixmap);
-    if(HP<BALL_WOOD_HP/2)
-        Pixmap.setPixmap(pixmap2);
 }
 
 void Ball_Obstacle::collision()
@@ -39,6 +37,10 @@ void Ball_Obstacle::collision()
     {
         death = true;
         HP = 0;
+    }
+    else if(HP<=BALL_WOOD_HP/2)
+    {
+        Pixmap.setPixmap(QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball_damaged.png"));
     }
 }
 

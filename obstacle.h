@@ -7,9 +7,10 @@
 class Obstacle : public Item
 {
 public:
-    Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene);
+    Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pixmap, int type, b2World *world, QGraphicsScene *scene);
     void collision();
     double HP;
+    int TYPE;
 };
 
 #endif // OBSTACLE_H

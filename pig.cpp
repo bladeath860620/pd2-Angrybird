@@ -35,4 +35,6 @@ void Pig::collision()
     HP -= 500*V;
     if(HP<=0)
         death = true;
+    else if(HP<=PIG_HP/2)
+        Pixmap.setPixmap(QPixmap("img/Angry Birds Seasons/pig_damaged.png"));
 }

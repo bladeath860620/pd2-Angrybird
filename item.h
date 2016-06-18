@@ -17,6 +17,7 @@ public:
     double HP;
     double VB;
     bool death;
+    int TYPE;
     virtual void collision();
 
 public slots:
