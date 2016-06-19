@@ -2,6 +2,8 @@
 
 Ball_Obstacle::Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene):Item(world)
 {
+    SE = new QMediaPlayer;
+    SE->setMedia(QUrl("qrc:/snd/sound effects/SND_FILES/wood_break.wav"));
     HP = BALL_WOOD_HP;
     death = false;
     Pixmap.setPixmap(pixmap);
@@ -35,11 +37,13 @@ void Ball_Obstacle::collision()
     HP -= 500*V;
     if(HP<=0)
     {
+        SE->play();
         death = true;
         HP = 0;
     }
     else if(HP<=BALL_WOOD_HP/2)
     {
+        SE->play();
         Pixmap.setPixmap(QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball_damaged.png"));
     }
 }

@@ -72,7 +72,7 @@
      <rect>
       <x>1300</x>
       <y>300</y>
-      <width>211</width>
+      <width>191</width>
       <height>381</height>
      </rect>
     </property>
@@ -80,7 +80,7 @@
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>   A STUPID CONCRETE WALL</string>
+     <string> A STUPID CONCRETE WALL</string>
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdNumber">
@@ -148,7 +148,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string>        Lives left </string>
+     <string>        Birds left </string>
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdNumber_3">

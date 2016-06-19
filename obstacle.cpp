@@ -2,6 +2,8 @@
 
 Obstacle::Obstacle(float x, float y, float w, float h, QTimer *timer, QPixmap pixmap, int type, b2World *world, QGraphicsScene *scene):Item(world)
 {
+    SE = new QMediaPlayer;
+    SE->setMedia(QUrl("qrc:/snd/sound effects/SND_FILES/wood_break.wav"));
     TYPE = type;
     HP = MID_WOOD_HP;
     death = false;
@@ -38,11 +40,13 @@ void Obstacle::collision()
     HP -= 500*V;
     if(HP<=0)
     {
+        SE->play();
         death = true;
         HP = 0;
     }
     else if(HP <= MID_WOOD_HP/2)
     {
+        SE->play();
         if(TYPE == 1)
             Pixmap.setPixmap(QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical_damaged.png"));
         else if(TYPE == 0)

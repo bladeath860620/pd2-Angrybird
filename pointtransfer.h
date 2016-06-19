@@ -14,6 +14,7 @@
 #include <QDebug>
 #include <QMouseEvent>
 #include <QVector>
+#include <QtMultimedia/QMediaPlayer>
 
 #define pi 3.14159
 
@@ -26,9 +27,9 @@
 #define WOOD_FRICTION 1.0
 #define WOOD_RESTITUTION 0.3
 
-#define MID_WOOD_HP 24000.0
-#define BALL_WOOD_HP 48000.0
-#define PIG_HP 10000.0
+#define MID_WOOD_HP 48000.0
+#define BALL_WOOD_HP 96000.0
+#define PIG_HP 40000.0
 
 # define start_X -34
 #define start_Y -7.5

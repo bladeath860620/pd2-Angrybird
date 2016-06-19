@@ -1,7 +1,8 @@
 #include "bird.h"
 
-Bird::Bird(float x, float y,float dense, float radius, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene):Item(world)
+Bird::Bird(int type, float x, float y,float dense, float radius, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene):Item(world)
 {
+    TYPE = type;
     Pixmap.setPixmap(pixmap);
     Pixmap.setTransformOriginPoint(Pixmap.boundingRect().width()/2,Pixmap.boundingRect().height()/2);
     size = QSize(radius*2,radius*2);
@@ -32,6 +33,17 @@ Bird::Bird(float x, float y,float dense, float radius, QTimer *timer, QPixmap pi
 void Bird::setLinearVelocity(b2Vec2 velocity)
 {
     Body->SetLinearVelocity(velocity);
+}
+
+void Bird::collision()
+{
+    available = false;
+    if(TYPE == 1)
+        Pixmap.setPixmap(QPixmap(":/bird/img/Angry Birds Seasons/BIRD_RED_COLLISION.png"));
+    else if(TYPE == 2)
+        Pixmap.setPixmap(QPixmap(":/bird/img/Angry Birds Seasons/BIRD_YELLOW_COLLISION.png"));
+    else if(TYPE == 4)
+        Pixmap.setPixmap(QPixmap(":/bird/img/Angry Birds Seasons/BIRD_GREY_1.png"));
 }
 
 Bird::~Bird()

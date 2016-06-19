@@ -30,6 +30,13 @@ public:
     bool newed = false;
     bool skill = true;
     int score = 0;
+    //bool available;
+    bool CD;
+    bool outer = false;
+    void closeEvent(QCloseEvent *);
+
+signals:
+    void quitGame();
 
 public slots:
     void tick();
@@ -38,7 +45,6 @@ private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     b2World *world;
-    QList<Item *> itemList;
     QTimer timer;
     QSizeF worldMeter;
     QSizeF worldPixel;
@@ -53,7 +59,6 @@ private:
     Pig *pig2;
     Pig *pig3;
     bool pressed;
-    QPointF Force_pos0;
     QPointF Force_pos;
     Land *land2;
     Land *land3;
@@ -74,7 +79,10 @@ private:
     QVector<Item*> ::iterator it;
     QVector<Bird*> BIRD;
     QVector<Bird*> ::iterator Bit;
-
+    QMediaPlayer *MEDIA;
+    QGraphicsPixmapItem * arrow;
+    QPointF clicked_point;
+    QPointF drag_start;
 };
 
 #endif // MAINWINDOW_H

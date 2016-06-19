@@ -9,6 +9,7 @@ public:
     Ball_Obstacle(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2World *world, QGraphicsScene *scene);
     double HP;
     void collision();
+    QMediaPlayer *SE;
 };
 
 #endif // BALL_OBSTACLE_H

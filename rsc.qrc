@@ -9,6 +9,9 @@
         <file>img/Angry Birds Seasons/BLOCK_EXTRA_TNT.png</file>
         <file>img/Angry Birds Seasons/BIRD_GREY_YELL.png</file>
         <file>img/Angry Birds Seasons/TA.png</file>
+        <file>img/Angry Birds Seasons/BIRD_RED_COLLISION.png</file>
+        <file>img/Angry Birds Seasons/BIRD_YELLOW_COLLISION.png</file>
+        <file>img/Angry Birds Seasons/BIRD_GREY_1.png</file>
     </qresource>
     <qresource prefix="/pig">
         <file>img/Angry Birds Seasons/pig.png</file>
@@ -24,5 +27,11 @@
     </qresource>
     <qresource prefix="/sling">
         <file>img/Angry Birds Seasons/Angry Birds Seasons/SLING_SHOT_01_FRONT.png</file>
+    </qresource>
+    <qresource prefix="/snd">
+        <file>sound effects/SND_FILES/wood_break.wav</file>
+    </qresource>
+    <qresource prefix="/arrow">
+        <file>img/arrow.png</file>
     </qresource>
 </RCC>

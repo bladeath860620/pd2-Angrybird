@@ -62,7 +62,7 @@ public:
         label_2->setStyleSheet(QStringLiteral("background-image: url(:/sling/img/Angry Birds Seasons/Angry Birds Seasons/SLING_SHOT_01_FRONT.png);"));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(1300, 300, 211, 381));
+        label->setGeometry(QRect(1300, 300, 191, 381));
         label->setStyleSheet(QStringLiteral(""));
         lcdNumber = new QLCDNumber(centralWidget);
         lcdNumber->setObjectName(QStringLiteral("lcdNumber"));
@@ -105,10 +105,10 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
         label_2->setText(QString());
-        label->setText(QApplication::translate("MainWindow", "   A STUPID CONCRETE WALL", 0));
+        label->setText(QApplication::translate("MainWindow", " A STUPID CONCRETE WALL", 0));
         label_3->setText(QApplication::translate("MainWindow", "   Current points", 0));
         label_4->setText(QApplication::translate("MainWindow", "         Pigs left", 0));
-        label_5->setText(QApplication::translate("MainWindow", "        Lives left ", 0));
+        label_5->setText(QApplication::translate("MainWindow", "        Birds left ", 0));
     } // retranslateUi
 
 };

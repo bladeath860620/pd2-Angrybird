@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++0x -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -I../../../../QT_5.6.0/5.6/gcc_64/include -I../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets -I../../../../QT_5.6.0/5.6/gcc_64/include/QtGui -I../../../../QT_5.6.0/5.6/gcc_64/include/QtCore -I. -I. -I../../../../QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -I../../../../QT_5.6.0/5.6/gcc_64/include -I../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia -I../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets -I../../../../QT_5.6.0/5.6/gcc_64/include/QtGui -I../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork -I../../../../QT_5.6.0/5.6/gcc_64/include/QtCore -I. -I. -I../../../../QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = Angrybird1.0.0
 DISTDIR = /home/skywater/Desktop/PROGRAM/Angry/Angrybird/Angrybird/.tmp/Angrybird1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-z,origin -Wl,-rpath,\$$ORIGIN -Wl,-rpath,/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/lib
-LIBS          = $(SUBLIBS) -L . -lBox2D -L/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L . -lBox2D -L/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/lib -lQt5Multimedia -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -372,8 +372,10 @@ Makefile: Angrybird.pro ../../../../QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++/qmake.
 		../../../../QT_5.6.0/5.6/gcc_64/mkspecs/features/lex.prf \
 		Angrybird.pro \
 		rsc.qrc \
+		../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Multimedia.prl \
 		../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Widgets.prl \
 		../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Gui.prl \
+		../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Network.prl \
 		../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Core.prl
 	$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile Angrybird.pro
 ../../../../QT_5.6.0/5.6/gcc_64/mkspecs/features/spec_pre.prf:
@@ -512,8 +514,10 @@ Makefile: Angrybird.pro ../../../../QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++/qmake.
 ../../../../QT_5.6.0/5.6/gcc_64/mkspecs/features/lex.prf:
 Angrybird.pro:
 rsc.qrc:
+../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Multimedia.prl:
 ../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Widgets.prl:
 ../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Gui.prl:
+../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Network.prl:
 ../../../../QT_5.6.0/5.6/gcc_64/lib/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug -o Makefile Angrybird.pro
@@ -556,7 +560,8 @@ check: first
 compiler_rcc_make_all: qrc_rsc.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_rsc.cpp
-qrc_rsc.cpp: rsc.qrc
+qrc_rsc.cpp: rsc.qrc \
+		img/arrow.png
 	/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/rcc -name rsc rsc.qrc -o qrc_rsc.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_item.cpp
@@ -727,6 +732,22 @@ moc_mainwindow.cpp: ../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QMainWindo
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QDebug \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QMouseEvent \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h \
 		land.h \
 		bird.h \
@@ -735,7 +756,7 @@ moc_mainwindow.cpp: ../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QMainWindo
 		bumpchecker.h \
 		pig.h \
 		mainwindow.h
-	/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/skywater/Desktop/PROGRAM/Angry/Angrybird/Angrybird -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtWidgets -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtGui -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
+	/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/skywater/Desktop/PROGRAM/Angry/Angrybird/Angrybird -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtMultimedia -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtWidgets -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtGui -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtNetwork -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtCore mainwindow.h -o moc_mainwindow.cpp
 
 moc_item.cpp: pointtransfer.h \
 		Box2D/Box2D.h \
@@ -894,8 +915,24 @@ moc_item.cpp: pointtransfer.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h
-	/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/skywater/Desktop/PROGRAM/Angry/Angrybird/Angrybird -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtWidgets -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtGui -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtCore item.h -o moc_item.cpp
+	/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/moc $(DEFINES) -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/mkspecs/linux-g++ -I/home/skywater/Desktop/PROGRAM/Angry/Angrybird/Angrybird -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtMultimedia -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtWidgets -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtGui -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtNetwork -I/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/include/QtCore item.h -o moc_item.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1081,6 +1118,22 @@ main.o: main.cpp mainwindow.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QDebug \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QMouseEvent \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h \
 		land.h \
 		bird.h \
@@ -1263,6 +1316,22 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QDebug \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/QMouseEvent \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h \
 		land.h \
 		bird.h \
@@ -1271,44 +1340,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		bumpchecker.h \
 		pig.h \
 		ui_mainwindow.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QAction \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qaction.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qactiongroup.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QApplication \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qapplication.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qcoreapplication.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qeventloop.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qinputmethod.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QButtonGroup \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qbuttongroup.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QGraphicsView \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qgraphicsview.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qscrollarea.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qframe.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QHeaderView \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qheaderview.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractitemview.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qabstractitemmodel.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qitemselectionmodel.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qstyleoption.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvalidator.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qregularexpression.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qslider.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractslider.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qstyle.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qtabbar.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qrubberband.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QLCDNumber \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qlcdnumber.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QLabel \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qlabel.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QWidget \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QGraphicsRectItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -1469,7 +1500,23 @@ item.o: item.cpp item.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o item.o item.cpp
 
 pointtransfer.o: pointtransfer.cpp pointtransfer.h \
@@ -1628,7 +1675,23 @@ pointtransfer.o: pointtransfer.cpp pointtransfer.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qfiledevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
-		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pointtransfer.o pointtransfer.cpp
 
 bird.o: bird.cpp bird.h \
@@ -1789,6 +1852,22 @@ bird.o: bird.cpp bird.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bird.o bird.cpp
 
@@ -1950,6 +2029,22 @@ land.o: land.cpp land.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o land.o land.cpp
 
@@ -2111,6 +2206,22 @@ obstacle.o: obstacle.cpp obstacle.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obstacle.o obstacle.cpp
 
@@ -2272,6 +2383,22 @@ ball_obstacle.o: ball_obstacle.cpp ball_obstacle.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ball_obstacle.o ball_obstacle.cpp
 
@@ -2433,6 +2560,22 @@ bumpchecker.o: bumpchecker.cpp bumpchecker.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bumpchecker.o bumpchecker.cpp
 
@@ -2594,6 +2737,22 @@ pig.o: pig.cpp pig.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvector2d.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVector \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/QMediaPlayer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaplayer.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qtmultimediadefs.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmultimedia.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediacontent.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaresource.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkrequest.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QSharedDataPointer \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QString \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QUrl \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/QVariant \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qmediaenumdebug.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtMultimedia/qaudio.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtNetwork/qnetworkconfiguration.h \
 		item.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pig.o pig.cpp
 

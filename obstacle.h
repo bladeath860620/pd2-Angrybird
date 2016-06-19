@@ -11,6 +11,7 @@ public:
     void collision();
     double HP;
     int TYPE;
+    QMediaPlayer *SE;
 };
 
 #endif // OBSTACLE_H
