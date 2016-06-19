@@ -30,11 +30,15 @@ Pig::Pig(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2World 
 void Pig::collision()
 {
     //qDebug() << " HP : " << HP;
+    qDebug() << HP;
     b2Vec2 speed = Body -> GetLinearVelocity();
     double V = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
     HP -= 500*V;
     if(HP<=0)
+    {
         death = true;
-    else if(HP<=PIG_HP/2)
+        qDebug() << "KILLED";
+    }
+        else if(HP<=PIG_HP/2)
         Pixmap.setPixmap(QPixmap("img/Angry Birds Seasons/pig_damaged.png"));
 }

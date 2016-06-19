@@ -37,6 +37,7 @@ public:
     QLabel *label_5;
     QLCDNumber *lcdNumber_3;
     QPushButton *pushButton;
+    QPushButton *pushButton_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -91,6 +92,10 @@ public:
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(1520, 10, 68, 68));
         pushButton->setStyleSheet(QStringLiteral("background-image: url(:/button/img/RESTART BUTTON 1.png);"));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(1520, 80, 68, 27));
+        pushButton_2->setStyleSheet(QStringLiteral("background-image: url(:/button/img/Button_Quit.jpg);"));
         MainWindow->setCentralWidget(centralWidget);
         graphicsView->raise();
         lcdNumber_3->raise();
@@ -102,6 +107,7 @@ public:
         label_4->raise();
         label_5->raise();
         pushButton->raise();
+        pushButton_2->raise();
 
         retranslateUi(MainWindow);
 
@@ -117,6 +123,7 @@ public:
         label_4->setText(QApplication::translate("MainWindow", "         Pigs left", 0));
         label_5->setText(QApplication::translate("MainWindow", "        Birds left ", 0));
         pushButton->setText(QString());
+        pushButton_2->setText(QString());
     } // retranslateUi
 
 };

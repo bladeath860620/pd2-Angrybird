@@ -12,6 +12,7 @@ public:
     double HP;
     int TYPE;
     QMediaPlayer *SE;
+    bool playable = true;
 };
 
 #endif // OBSTACLE_H

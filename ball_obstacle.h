@@ -10,6 +10,7 @@ public:
     double HP;
     void collision();
     QMediaPlayer *SE;
+    bool playable = true;
 };
 
 #endif // BALL_OBSTACLE_H

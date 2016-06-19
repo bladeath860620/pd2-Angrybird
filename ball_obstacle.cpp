@@ -43,7 +43,11 @@ void Ball_Obstacle::collision()
     }
     else if(HP<=BALL_WOOD_HP/2)
     {
-        SE->play();
+        if(playable)
+        {
+            SE->play();
+            playable = false;
+        }
         Pixmap.setPixmap(QPixmap(":/obstacle/img/Angry Birds Seasons/wood_ball_damaged.png"));
     }
 }

@@ -299,7 +299,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
                 pressed = false;
             break;
             case 5:
-                qDebug() << "NUCLEAR TA";
+                qDebug() << "TA NUCLEAR";
                 gravity_center = (*Bit)->Body->GetPosition();
                 for(it=WOOD.begin(); it!=WOOD.end(); ++it)
                 {

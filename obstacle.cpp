@@ -46,7 +46,11 @@ void Obstacle::collision()
     }
     else if(HP <= MID_WOOD_HP/2)
     {
-        SE->play();
+        if(playable)
+        {
+            SE->play();
+            playable = false;
+        }
         if(TYPE == 1)
             Pixmap.setPixmap(QPixmap(":/obstacle/img/Angry Birds Seasons/wood_mid_vertical_damaged.png"));
         else if(TYPE == 0)

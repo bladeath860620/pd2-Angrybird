@@ -561,7 +561,8 @@ compiler_rcc_make_all: qrc_rsc.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_rsc.cpp
 qrc_rsc.cpp: rsc.qrc \
-		img/arrow.png
+		img/arrow.png \
+		img/Button_Quit.jpg
 	/home/skywater/Desktop/QT_5.6.0/5.6/gcc_64/bin/rcc -name rsc rsc.qrc -o qrc_rsc.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_item.cpp
@@ -1376,6 +1377,9 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qlcdnumber.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QLabel \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QPushButton \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractbutton.h \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QWidget \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QGraphicsRectItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp

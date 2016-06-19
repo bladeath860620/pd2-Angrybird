@@ -177,6 +177,22 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>1520</x>
+      <y>80</y>
+      <width>68</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/button/img/Button_Quit.jpg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>graphicsView</zorder>
    <zorder>lcdNumber_3</zorder>
    <zorder>lcdNumber_2</zorder>
@@ -187,6 +203,7 @@
    <zorder>label_4</zorder>
    <zorder>label_5</zorder>
    <zorder>pushButton</zorder>
+   <zorder>pushButton_2</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
