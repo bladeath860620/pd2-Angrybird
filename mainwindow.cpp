@@ -271,7 +271,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
             break;
             case 3:
                 qDebug() << "iron";
-                (*Bit)->Body->SetLinearVelocity(b2Vec2(0,-100));
+                (*Bit)->Body->SetLinearVelocity(b2Vec2(0,-300));
                 skill = false;
                 pressed = false;
             break;
@@ -284,7 +284,7 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
                     dist = qSqrt(qPow(gravity_center.x-bodypos.x,2)+qPow(gravity_center.y-bodypos.y,2));
                     if(dist<=4)
                     {
-                        gravity = b2Vec2(2000000/dist,2000000/dist);
+                        gravity = b2Vec2(4000000/dist,4000000/dist);
                         (*it)->Body->ApplyForceToCenter(gravity, true);
                     }
                 }
@@ -292,14 +292,14 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
                 {
                     bodypos = (*it)->Body->GetPosition();
                     dist = qSqrt(qPow(gravity_center.x-bodypos.x,2)+qPow(gravity_center.y-bodypos.y,2));
-                    gravity = b2Vec2(400000/dist,400000/dist);
+                    gravity = b2Vec2(800000/dist,800000/dist);
                     (*it)->Body->ApplyForceToCenter(gravity, true);
                 }
                 skill = false;
                 pressed = false;
             break;
             case 5:
-                qDebug() << "NUCLEAR TA";
+                qDebug() << "TA NUCLEAR";
                 gravity_center = (*Bit)->Body->GetPosition();
                 for(it=WOOD.begin(); it!=WOOD.end(); ++it)
                 {
