@@ -18,6 +18,7 @@
 #include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -35,6 +36,7 @@ public:
     QLCDNumber *lcdNumber_2;
     QLabel *label_5;
     QLCDNumber *lcdNumber_3;
+    QPushButton *pushButton;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -85,6 +87,10 @@ public:
         lcdNumber_3 = new QLCDNumber(centralWidget);
         lcdNumber_3->setObjectName(QStringLiteral("lcdNumber_3"));
         lcdNumber_3->setGeometry(QRect(150, 100, 111, 41));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(1520, 10, 68, 68));
+        pushButton->setStyleSheet(QStringLiteral("background-image: url(:/button/img/RESTART BUTTON 1.png);"));
         MainWindow->setCentralWidget(centralWidget);
         graphicsView->raise();
         lcdNumber_3->raise();
@@ -95,6 +101,7 @@ public:
         label_3->raise();
         label_4->raise();
         label_5->raise();
+        pushButton->raise();
 
         retranslateUi(MainWindow);
 
@@ -109,6 +116,7 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "   Current points", 0));
         label_4->setText(QApplication::translate("MainWindow", "         Pigs left", 0));
         label_5->setText(QApplication::translate("MainWindow", "        Birds left ", 0));
+        pushButton->setText(QString());
     } // retranslateUi
 
 };

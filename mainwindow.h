@@ -41,6 +41,9 @@ signals:
 public slots:
     void tick();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;

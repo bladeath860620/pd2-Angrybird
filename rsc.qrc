@@ -34,4 +34,7 @@
     <qresource prefix="/arrow">
         <file>img/arrow.png</file>
     </qresource>
+    <qresource prefix="/button">
+        <file>img/RESTART BUTTON 1.png</file>
+    </qresource>
 </RCC>

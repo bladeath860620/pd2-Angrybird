@@ -161,6 +161,22 @@
      </rect>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>1520</x>
+      <y>10</y>
+      <width>68</width>
+      <height>68</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/button/img/RESTART BUTTON 1.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>graphicsView</zorder>
    <zorder>lcdNumber_3</zorder>
    <zorder>lcdNumber_2</zorder>
@@ -170,6 +186,7 @@
    <zorder>label_3</zorder>
    <zorder>label_4</zorder>
    <zorder>label_5</zorder>
+   <zorder>pushButton</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

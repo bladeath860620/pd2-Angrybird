@@ -1340,6 +1340,43 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		bumpchecker.h \
 		pig.h \
 		ui_mainwindow.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QAction \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qaction.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QApplication \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qeventloop.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QGraphicsView \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qgraphicsview.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qscrollarea.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qframe.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtGui/qvalidator.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qslider.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QLCDNumber \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qlcdnumber.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QLabel \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QWidget \
 		../../../../QT_5.6.0/5.6/gcc_64/include/QtWidgets/QGraphicsRectItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
