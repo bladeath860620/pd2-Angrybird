@@ -30,6 +30,9 @@
     </qresource>
     <qresource prefix="/snd">
         <file>sound effects/SND_FILES/wood_break.wav</file>
+        <file>sound effects/defeat.wav</file>
+        <file>sound effects/victory.wav</file>
+        <file>sound effects/bird.wav</file>
     </qresource>
     <qresource prefix="/arrow">
         <file>img/arrow.png</file>

@@ -91,6 +91,8 @@ private:
     QPointF clicked_point;
     QPointF drag_start;
     Results *results;
+    QMediaPlayer *shootbird;
+    float VB;
 };
 
 #endif // MAINWINDOW_H

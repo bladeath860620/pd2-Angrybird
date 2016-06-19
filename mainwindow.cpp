@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     contact = new BumpChecker;
     world->SetContactListener(contact);
+    shootbird = new QMediaPlayer;
+    shootbird->setMedia(QUrl("qrc:/snd/sound effects/bird.wav"));
 
     land = new Land(-4000000.0f, 0.0f, 16000000, 1, world, scene);
 
@@ -91,7 +93,7 @@ void MainWindow::tick()
     {
         CD = (*Bit)->available;
         b2Vec2 speed = (*Bit)->Body->GetLinearVelocity();
-        double VB = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
+        VB = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
         b2Vec2 X = (*Bit)->Body->GetPosition();;
         if((X.y>120 || X.x<-20) || X.x>100)
             outer = true;
@@ -178,6 +180,8 @@ bool MainWindow::eventFilter(QObject *, QEvent *event)
     {
         arrow->setVisible(false);
         Force_pos = static_cast<QMouseEvent*>(event)->pos();
+        if(pressed && bird_count!=3 && bird_count!=5)
+            shootbird->play();
         pressed = false;
         b2Vec2 linearV = b2Vec2((clicked_point.x()-Force_pos.x())/15,(Force_pos.y()-clicked_point.y())/15);
         if(bird_count == 1)
@@ -239,7 +243,7 @@ bool MainWindow::eventFilter(QObject *, QEvent *event)
     else if(event->type() == QEvent::MouseMove)
     {
         //Force_pos = static_cast<QMouseEvent*>(event)->pos();
-        if(pressed && !BIRD.empty() && !shot)
+        if(pressed && !BIRD.empty() && !shot && VB == 0)
         {
             //qDebug() << "ARROW!";
             QPointF temp = static_cast<QMouseEvent*>(event)->pos();
@@ -380,7 +384,7 @@ void MainWindow::resetGame()
     qDebug() << "WOOD ERASED";
     for(it=PIG.begin();it!=PIG.end();++it)
     {
-        qDebug() << it;
+        //qDebug() << it;
         delete (*it);
     }
     PIG.clear();

@@ -2,7 +2,7 @@
 #define RESULTS_H
 
 #include <QDialog>
-
+#include "pointtransfer.h"
 namespace Ui {
 class Results;
 }
@@ -19,6 +19,7 @@ public:
 
 private:
     Ui::Results *ui;
+    QMediaPlayer *Media;
 };
 
 #endif // RESULTS_H
