@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     obstacle.cpp \
     ball_obstacle.cpp \
     bumpchecker.cpp \
-    pig.cpp
+    pig.cpp \
+    results.cpp
 
 HEADERS  += mainwindow.h \
     item.h \
@@ -31,9 +32,11 @@ HEADERS  += mainwindow.h \
     obstacle.h \
     ball_obstacle.h \
     bumpchecker.h \
-    pig.h
+    pig.h \
+    results.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    results.ui
 
 LIBS += -L . -lBox2D
 

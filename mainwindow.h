@@ -10,7 +10,7 @@
 #include "ball_obstacle.h"
 #include "bumpchecker.h"
 #include "pig.h"
-
+#include "results.h"
 namespace Ui {
 class MainWindow;
 }
@@ -34,6 +34,8 @@ public:
     bool CD;
     bool outer = false;
     void closeEvent(QCloseEvent *);
+    void showResult();
+    void resetGame();
 
 signals:
     void quitGame();
@@ -88,6 +90,7 @@ private:
     QGraphicsPixmapItem * arrow;
     QPointF clicked_point;
     QPointF drag_start;
+    Results *results;
 };
 
 #endif // MAINWINDOW_H

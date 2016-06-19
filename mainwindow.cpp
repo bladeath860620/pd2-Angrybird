@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     qApp->installEventFilter(this);
     ui->setupUi(this);
+    results = new Results;
     scene = new QGraphicsScene(0,0,1600,700);
     ui -> graphicsView -> setScene(scene);
     world = new b2World(b2Vec2(0.0f,-9.8f));//set gravity
@@ -76,6 +77,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::tick()
 {
+    if((pig_count==0&&bird_count==6) || score==33000)
+    {
+        qDebug() << "pig_count : " << pig_count;
+        qDebug() << "bird_count : " << bird_count;
+        qDebug() << "score : " << score;
+        showResult();
+    }
     ui->lcdNumber->display(score);
     ui->lcdNumber_2->display(pig_count);
     ui->lcdNumber_3->display(6-bird_count);
@@ -136,6 +144,7 @@ void MainWindow::tick()
             shot = false;
             newed = true;
             outer = false;
+            showResult();
         }
     }
     for(it = WOOD.begin(); it!= WOOD.end(); ++it)
@@ -338,8 +347,23 @@ void MainWindow::closeEvent(QCloseEvent *)
     emit quitGame();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::showResult()
 {
+    this->hide();
+    results->show();
+    results->showScore(score);
+    results->showText(pig_count, score, 6-bird_count);
+    if(results->exec())
+    {
+        this->show();
+        results->close();
+        resetGame();
+    }
+}
+
+void MainWindow::resetGame()
+{
+    results = new Results;
     bird_count = 1;
     pig_count = 3;
     shot = false;
@@ -424,6 +448,11 @@ void MainWindow::on_pushButton_clicked()
 
     WOOD.push_back(land);
     PIG.push_back(wall);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    resetGame();
 }
 
 void MainWindow::on_pushButton_2_clicked()

@@ -30,7 +30,6 @@ Pig::Pig(float x, float y, float radius, QTimer *timer, QPixmap pixmap, b2World 
 void Pig::collision()
 {
     //qDebug() << " HP : " << HP;
-    qDebug() << HP;
     b2Vec2 speed = Body -> GetLinearVelocity();
     double V = qSqrt(qPow(speed.x,2)+qPow(speed.y,2));
     HP -= 500*V;
